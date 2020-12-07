@@ -10,7 +10,7 @@ public class Main {
 
     private void run(String[] args) {
         try {
-            new RPSGame(args).start();
+            new RPSGame(args).run();
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Failed to init MAC");
         }

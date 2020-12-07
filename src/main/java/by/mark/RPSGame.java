@@ -1,6 +1,8 @@
 package by.mark;
 
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -22,8 +24,7 @@ public class RPSGame {
         this.digest = MessageDigest.getInstance("SHA3-256");
     }
 
-    public void start() {
-        Scanner in = new Scanner(System.in);
+    public void start(Scanner in) {
         while (!areValidParams(params)) {
             System.out.print("Game moves: ");
             params = in.nextLine().split("\\s+");
@@ -65,6 +66,12 @@ public class RPSGame {
 
         // Fair-play :)
         System.out.println("\nHMAC Key:\n\t" + bytesToHex(key));
+    }
+
+    public void run() {
+        try(Scanner in = new Scanner(System.in)) {
+            start(in);
+        }
     }
 
     private boolean userWins(int userChoice, int pcChoice, int movesCount) {
