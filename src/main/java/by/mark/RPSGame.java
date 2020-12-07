@@ -25,9 +25,8 @@ public class RPSGame {
     }
 
     public void start(Scanner in) {
-        while (!areValidParams(params)) {
-            System.out.print("Game moves: ");
-            params = in.nextLine().split("\\s+");
+        if (!areValidParams(params)) {
+            return;
         }
 
         // key
